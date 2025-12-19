@@ -83,7 +83,7 @@ const Archives = () => {
       {/* Filters - Sticky with proper z-index */}
       <section className="sticky top-16 md:top-20 z-40 bg-background/95 backdrop-blur-sm border-b border-border py-4">
         <div className="container-museum">
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+          <div className="flex flex-col md:flex-row md:flex-wrap gap-4 items-center justify-between">
             {/* Search */}
             <div className="relative w-full md:w-80">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -96,7 +96,7 @@ const Archives = () => {
             </div>
 
             {/* Type Filters */}
-            <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
+            <div className="flex items-center flex-wrap gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
               {archiveTypes.map((type) => (
                 <Button
                   key={type}
@@ -111,7 +111,7 @@ const Archives = () => {
             </div>
 
             {/* View Controls */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap md:flex-nowrap">
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
