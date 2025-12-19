@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Trophy, Moon, Sun } from "lucide-react";
+import { Menu, X, Moon, Sun, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/components/theme-provider";
@@ -15,11 +15,17 @@ const navLinks = [
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [logoError, setLogoError] = useState(false);
   const location = useLocation();
   const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  const handleLogoError = () => {
+    console.warn("Failed to load GFA logo image, using fallback");
+    setLogoError(true);
   };
 
   return (
@@ -28,9 +34,22 @@ export function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Trophy className="w-5 h-5 text-secondary" />
-            </div>
+            {!logoError ? (
+              <picture>
+                <source srcSet="/images/gfa-logo.svg" type="image/svg+xml" />
+                <img 
+                  src="/images/gfa-logo.svg" 
+                  alt="GFA Logo" 
+                  className="w-10 h-10 rounded-full group-hover:scale-110 transition-transform object-contain bg-primary/10"
+                  onError={handleLogoError}
+                  loading="eager"
+                />
+              </picture>
+            ) : (
+              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Trophy className="w-5 h-5 text-secondary" />
+              </div>
+            )}
             <div className="hidden sm:block">
               <p className="font-display text-xl tracking-wider text-foreground">GFA Museum</p>
               <p className="text-[10px] text-muted-foreground tracking-widest uppercase">Digital Heritage</p>

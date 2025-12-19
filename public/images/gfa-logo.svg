@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Red background (left) -->
+  <rect width="100" height="200" fill="#CE1126"/>
+  
+  <!-- Yellow background (top right) -->
+  <polygon points="100,0 200,0 100,100" fill="#FCD116"/>
+  
+  <!-- Green background (bottom right) -->
+  <polygon points="100,100 200,200 100,200" fill="#007A5E"/>
+  
+  <!-- Black star in yellow section -->
+  <g transform="translate(150, 50)">
+    <polygon points="0,-8 2.4,-2.4 8,-2.4 3.2,2 5.6,8 0,4 -5.6,8 -3.2,2 -8,-2.4 -2.4,-2.4" fill="#000000"/>
+  </g>
+  
+  <!-- White circle for soccer ball -->
+  <circle cx="100" cy="100" r="45" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+  
+  <!-- Soccer ball pattern -->
+  <g transform="translate(100, 100)">
+    <!-- Center pentagon -->
+    <polygon points="0,-15 14.3,-4.7 8.8,12.2 -8.8,12.2 -14.3,-4.7" fill="#000000"/>
+    
+    <!-- Hexagons around pentagon -->
+    <polygon points="14.3,-4.7 25,-15 30,-4.7 19.3,4.7 8.8,12.2 14.3,-4.7" fill="#FFFFFF" stroke="#000000" stroke-width="0.5"/>
+    <polygon points="8.8,12.2 19.3,4.7 30,4.7 19.3,15.3 8.8,15.3 0,25" fill="#000000"/>
+    <polygon points="-8.8,12.2 0,25 -19.3,15.3 -30,4.7 -19.3,4.7 -14.3,-4.7" fill="#FFFFFF" stroke="#000000" stroke-width="0.5"/>
+    <polygon points="-14.3,-4.7 -19.3,4.7 -30,-4.7 -25,-15 -14.3,-4.7" fill="#000000"/>
+  </g>
+</svg>

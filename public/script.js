@@ -85,7 +85,7 @@ const archives = [
     id: 1,
     title: "1963 AFCON Trophy",
     type: "trophy",
-    image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=640&h=480&fit=crop",
+    image: "images/trophy.jpg",
     description: "Ghana's historic first Africa Cup of Nations victory, held on home soil. The Black Stars defeated Sudan 3-0 in the final.",
     year: 1963,
   },
@@ -93,7 +93,7 @@ const archives = [
     id: 2,
     title: "1965 AFCON Defense",
     type: "trophy",
-    image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=640&h=480&fit=crop",
+    image: "images/trophy.jpg",
     description: "Ghana successfully defended their continental title in Tunisia, showcasing dominance in African football.",
     year: 1965,
   },
@@ -101,7 +101,7 @@ const archives = [
     id: 3,
     title: "Accra Sports Stadium",
     type: "stadium",
-    image: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=640&h=480&fit=crop",
+    image: "images/stadium.jpg",
     description: "The iconic home of Ghana football, witness to countless historic moments and legendary matches.",
     year: 1952,
   },
@@ -109,7 +109,7 @@ const archives = [
     id: 4,
     title: "Black Stars 2010 World Cup",
     type: "match",
-    image: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=640&h=480&fit=crop",
+    image: "images/celebration.jpg",
     description: "Ghana became only the third African nation to reach the World Cup quarter-finals in South Africa.",
     year: 2010,
   },
@@ -117,7 +117,7 @@ const archives = [
     id: 5,
     title: "Vintage Memorabilia Collection",
     type: "memorabilia",
-    image: "https://images.unsplash.com/photo-1518604666860-9ed391f76460?w=640&h=480&fit=crop",
+    image: "images/memorabilia.jpg",
     description: "Original jerseys, match balls, and memorabilia from Ghana's football golden era in the 1960s and 70s.",
     year: 1970,
   },
@@ -125,7 +125,7 @@ const archives = [
     id: 6,
     title: "1978 AFCON Championship",
     type: "trophy",
-    image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=640&h=480&fit=crop",
+    image: "images/trophy.jpg",
     description: "Ghana claimed their third continental title on home soil, defeating Uganda 2-0 in the final.",
     year: 1978,
   },
@@ -133,7 +133,7 @@ const archives = [
     id: 7,
     title: "1982 AFCON Victory",
     type: "trophy",
-    image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=640&h=480&fit=crop",
+    image: "images/trophy.jpg",
     description: "The Black Stars secured their fourth Africa Cup of Nations trophy in Libya.",
     year: 1982,
   },
@@ -141,7 +141,7 @@ const archives = [
     id: 8,
     title: "Olympic Bronze 1992",
     type: "match",
-    image: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=640&h=480&fit=crop",
+    image: "images/celebration.jpg",
     description: "Ghana's U-23 team won bronze at the Barcelona Olympics, marking a historic Olympic achievement.",
     year: 1992,
   },
@@ -149,7 +149,7 @@ const archives = [
     id: 9,
     title: "Cape Coast Stadium",
     type: "stadium",
-    image: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=640&h=480&fit=crop",
+    image: "images/stadium.jpg",
     description: "Modern 15,000-seat stadium in Cape Coast, hosting international matches and local competitions.",
     year: 2016,
   },
@@ -157,7 +157,7 @@ const archives = [
     id: 10,
     title: "Golden Generation Jerseys",
     type: "memorabilia",
-    image: "https://images.unsplash.com/photo-1518604666860-9ed391f76460?w=640&h=480&fit=crop",
+    image: "images/memorabilia.jpg",
     description: "Match-worn jerseys from Abedi Pele, Tony Yeboah, and the golden generation of Ghanaian football.",
     year: 1995,
   },
@@ -165,7 +165,7 @@ const archives = [
     id: 11,
     title: "FIFA U-20 World Cup 2009",
     type: "trophy",
-    image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=640&h=480&fit=crop",
+    image: "images/trophy.jpg",
     description: "Ghana became the first African nation to win the FIFA U-20 World Cup in Egypt.",
     year: 2009,
   },
@@ -173,7 +173,7 @@ const archives = [
     id: 12,
     title: "2006 World Cup Debut",
     type: "match",
-    image: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=640&h=480&fit=crop",
+    image: "images/celebration.jpg",
     description: "Ghana's historic first World Cup appearance in Germany, reaching the Round of 16.",
     year: 2006,
   },
@@ -862,6 +862,40 @@ function adminLogout() {
   location.reload();
 }
 
+// ==================== Button Handlers ====================
+function startVirtualTour() {
+  window.location.href = 'archives.html';
+  showToast('Explore our archive galleries!', 'info');
+}
+
+function startQuiz() {
+  showToast('Quiz feature coming soon! In the meantime, explore the archives.', 'info');
+  setTimeout(() => window.location.href = 'archives.html', 1500);
+}
+
+function startExhibitTour(exhibit) {
+  showToast(`Loading ${exhibit} tour...`, 'info');
+  setTimeout(() => window.location.href = 'archives.html', 1500);
+}
+
+// ==================== Image Error Handling ====================
+function handleImageError(img) {
+  img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480"%3E%3Crect fill="%23e0e0e0" width="640" height="480"/%3E%3Ctext x="50%25" y="50%25" font-family="Arial" font-size="24" fill="%23666" text-anchor="middle" dy=".3em"%3EImage Not Available%3C/text%3E%3C/svg%3E';
+  img.style.objectFit = 'contain';
+  img.alt = 'Image not available';
+}
+
+function initImageErrorHandlers() {
+  document.querySelectorAll('img').forEach((img) => {
+    img.addEventListener('error', () => handleImageError(img));
+    // Optional: add loading state
+    img.addEventListener('load', () => {
+      img.style.opacity = '1';
+    });
+    img.style.opacity = '0.7';
+  });
+}
+
 // ==================== Initialize ====================
 document.addEventListener("DOMContentLoaded", () => {
   initSlideshow();
@@ -871,5 +905,56 @@ document.addEventListener("DOMContentLoaded", () => {
   initTimeline();
   initContactForm();
   initAdminLogin();
+  initTheme();
+  injectThemeToggle();
+  setActiveNavLinks();
+  initImageErrorHandlers();
   renderArchives();
 });
+
+// ==================== Theme ====================
+function initTheme() {
+  const saved = localStorage.getItem("theme");
+  const isDark = saved === "dark" || (saved == null && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  document.documentElement.classList.toggle("theme-dark", !!isDark);
+}
+
+function injectThemeToggle() {
+  const headerInner = document.querySelector('.header-inner');
+  if (!headerInner) return;
+
+  const btn = document.createElement('button');
+  btn.className = 'mobile-menu-btn theme-toggle-btn';
+  btn.setAttribute('aria-label', 'Toggle theme');
+  const setIcon = () => {
+    const isDark = document.documentElement.classList.contains('theme-dark');
+    btn.innerHTML = isDark
+      ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+      : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+  };
+  setIcon();
+  btn.addEventListener('click', () => {
+    const nowDark = !document.documentElement.classList.contains('theme-dark');
+    document.documentElement.classList.toggle('theme-dark', nowDark);
+    localStorage.setItem('theme', nowDark ? 'dark' : 'light');
+    setIcon();
+  });
+
+  // Insert before mobile menu button for consistent placement
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  if (mobileBtn) {
+    headerInner.insertBefore(btn, mobileBtn);
+  } else {
+    headerInner.appendChild(btn);
+  }
+}
+
+// ==================== Navigation Active State ====================
+function setActiveNavLinks() {
+  const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  document.querySelectorAll('.nav .nav-link, .mobile-nav .mobile-nav-link').forEach((link) => {
+    const href = (link.getAttribute('href') || '').toLowerCase();
+    if (!href) return;
+    link.classList.toggle('active', href === current);
+  });
+}

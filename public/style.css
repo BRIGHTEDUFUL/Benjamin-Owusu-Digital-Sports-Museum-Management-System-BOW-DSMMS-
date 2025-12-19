@@ -39,6 +39,35 @@
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
+/* ==================== Dark Theme Overrides ==================== */
+html.theme-dark {
+  --background: hsl(0, 0%, 7%);
+  --foreground: hsl(0, 0%, 96%);
+  --card: hsl(0, 0%, 10%);
+  --card-foreground: hsl(0, 0%, 96%);
+  --primary: hsl(354, 86%, 48%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(48, 97%, 53%);
+  --secondary-foreground: hsl(0, 0%, 8%);
+  --muted: hsl(0, 0%, 16%);
+  --muted-foreground: hsl(0, 0%, 70%);
+  --accent: hsl(153, 100%, 26%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --border: hsl(0, 0%, 22%);
+  --destructive: hsl(0, 84%, 60%);
+}
+
+html.theme-dark .header {
+  background: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--border);
+}
+
+/* Theme toggle button */
+.theme-toggle-btn {
+  margin-left: 0.5rem;
+}
+
 /* ==================== Reset & Base ==================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -73,6 +102,17 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  background: var(--muted);
+  min-height: 100px;
+}
+
+img[loading="lazy"] {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+img[loading="lazy"]:not([src*="data:"]) {
+  object-fit: cover;
 }
 
 button {

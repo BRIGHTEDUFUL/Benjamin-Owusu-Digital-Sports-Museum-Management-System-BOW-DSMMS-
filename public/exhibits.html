@@ -15,14 +15,7 @@
       <div class="header-inner">
         <a href="index.html" class="logo">
           <div class="logo-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
-              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
-              <path d="M4 22h16"/>
-              <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
-              <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
-              <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
-            </svg>
+            <img src="images/gfa-logo.png" alt="GFA Logo" class="logo-img" onerror="this.style.display='none'">
           </div>
           <div class="logo-text">
             <p class="logo-title">GFA Museum</p>
@@ -55,6 +48,36 @@
     </div>
   </header>
 
+  <!-- Hero Slideshow Section -->
+  <section class="hero-slideshow" style="min-height: 50vh; padding-top: 80px;">
+    <div class="slideshow-container">
+      <div class="slide active">
+        <img src="images/hero-1.jpg" alt="Ghana Football Heritage">
+        <div class="slide-overlay"></div>
+      </div>
+      <div class="slide">
+        <img src="images/hero-2.jpg" alt="Interactive Experiences">
+        <div class="slide-overlay"></div>
+      </div>
+      <div class="slide">
+        <img src="images/hero-3.jpg" alt="Museum Exhibits">
+        <div class="slide-overlay"></div>
+      </div>
+      <div class="slide">
+        <img src="images/hero-4.jpg" alt="Black Stars Legacy">
+        <div class="slide-overlay"></div>
+      </div>
+    </div>
+    <button class="slideshow-btn slideshow-prev" onclick="prevSlide()"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <button class="slideshow-btn slideshow-next" onclick="nextSlide()"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+    <div class="slideshow-indicators">
+      <button class="indicator active" onclick="goToSlide(0)"></button>
+      <button class="indicator" onclick="goToSlide(1)"></button>
+      <button class="indicator" onclick="goToSlide(2)"></button>
+      <button class="indicator" onclick="goToSlide(3)"></button>
+    </div>
+  </section>
+
   <!-- Page Header -->
   <section class="page-header">
     <div class="container">
@@ -82,7 +105,7 @@
       <div class="exhibit-grid">
         <div class="card exhibit-card card-hover">
           <div class="exhibit-card-image">
-            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&h=450&fit=crop" alt="AFCON Trophy">
+            <img src="images/trophy.jpg" alt="AFCON Trophy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 450%22%3E%3Crect fill=%22%23e0e0e0%22 width=%22800%22 height=%22450%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%23666%22 text-anchor=%22middle%22 dy=%22.3em%22%3EAFCON Trophy%3C/text%3E%3C/svg%3E'" loading="lazy">
             <div class="exhibit-card-overlay"></div>
             <span class="badge badge-secondary exhibit-card-badge">Featured</span>
             <div class="exhibit-card-info">
@@ -121,7 +144,7 @@
                 12.5K
               </span>
             </div>
-            <button class="btn btn-ghost">
+            <button class="btn btn-ghost" onclick="startExhibitTour('AFCON Dynasty')">
               Start Tour
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="9 18 15 12 9 6"/>
@@ -132,7 +155,7 @@
         
         <div class="card exhibit-card card-hover">
           <div class="exhibit-card-image">
-            <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=800&h=450&fit=crop" alt="Stadium">
+            <img src="images/stadium.jpg" alt="Stadium" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 450%22%3E%3Crect fill=%22%23e0e0e0%22 width=%22800%22 height=%22450%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%23666%22 text-anchor=%22middle%22 dy=%22.3em%22%3EStadium%3C/text%3E%3C/svg%3E'" loading="lazy">
             <div class="exhibit-card-overlay"></div>
             <div class="exhibit-card-info">
               <span class="exhibit-card-type">Interactive</span>
@@ -170,7 +193,7 @@
                 8.2K
               </span>
             </div>
-            <button class="btn btn-ghost">
+            <button class="btn btn-ghost" onclick="startExhibitTour('Stadium Stories')">
               Start Tour
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="9 18 15 12 9 6"/>
@@ -181,7 +204,7 @@
         
         <div class="card exhibit-card card-hover">
           <div class="exhibit-card-image">
-            <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=800&h=450&fit=crop" alt="Players">
+            <img src="images/celebration.jpg" alt="Players" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 450%22%3E%3Crect fill=%22%23e0e0e0%22 width=%22800%22 height=%22450%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%23666%22 text-anchor=%22middle%22 dy=%22.3em%22%3EBlack Stars Legends%3C/text%3E%3C/svg%3E'" loading="lazy">
             <div class="exhibit-card-overlay"></div>
             <span class="badge badge-secondary exhibit-card-badge">Featured</span>
             <div class="exhibit-card-info">
@@ -220,7 +243,7 @@
                 15.3K
               </span>
             </div>
-            <button class="btn btn-ghost">
+            <button class="btn btn-ghost" onclick="startExhibitTour('Black Stars Legends')">
               Start Tour
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="9 18 15 12 9 6"/>
@@ -231,7 +254,7 @@
         
         <div class="card exhibit-card card-hover">
           <div class="exhibit-card-image">
-            <img src="https://images.unsplash.com/photo-1518604666860-9ed391f76460?w=800&h=450&fit=crop" alt="Memorabilia">
+            <img src="images/memorabilia.jpg" alt="Memorabilia" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 450%22%3E%3Crect fill=%22%23e0e0e0%22 width=%22800%22 height=%22450%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-family=%22Arial%22 font-size=%2224%22 fill=%22%23666%22 text-anchor=%22middle%22 dy=%22.3em%22%3EFootball Artifacts%3C/text%3E%3C/svg%3E'" loading="lazy">
             <div class="exhibit-card-overlay"></div>
             <div class="exhibit-card-info">
               <span class="exhibit-card-type">Collection</span>
@@ -269,7 +292,7 @@
                 6.8K
               </span>
             </div>
-            <button class="btn btn-ghost">
+            <button class="btn btn-ghost" onclick="startExhibitTour('Football Artifacts')">
               Start Tour
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="9 18 15 12 9 6"/>
@@ -341,7 +364,7 @@
           Think you know Ghana football? Challenge yourself with our interactive 
           quiz covering decades of Black Stars history.
         </p>
-        <button class="btn btn-hero btn-xl">
+        <button class="btn btn-hero btn-xl" onclick="startQuiz()">
           Start Quiz
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="9 18 15 12 9 6"/>

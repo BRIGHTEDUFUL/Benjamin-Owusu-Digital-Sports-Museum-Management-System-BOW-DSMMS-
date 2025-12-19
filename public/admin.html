@@ -55,6 +55,36 @@
     </div>
   </header>
 
+  <!-- Hero Slideshow Section -->
+  <section class="hero-slideshow" style="min-height: 40vh; padding-top: 80px;">
+    <div class="slideshow-container">
+      <div class="slide active">
+        <img src="images/hero-1.jpg" alt="Admin Panel">
+        <div class="slide-overlay"></div>
+      </div>
+      <div class="slide">
+        <img src="images/hero-2.jpg" alt="Content Management">
+        <div class="slide-overlay"></div>
+      </div>
+      <div class="slide">
+        <img src="images/hero-3.jpg" alt="Museum Admin">
+        <div class="slide-overlay"></div>
+      </div>
+      <div class="slide">
+        <img src="images/hero-4.jpg" alt="GFA Museum">
+        <div class="slide-overlay"></div>
+      </div>
+    </div>
+    <button class="slideshow-btn slideshow-prev" onclick="prevSlide()"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <button class="slideshow-btn slideshow-next" onclick="nextSlide()"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+    <div class="slideshow-indicators">
+      <button class="indicator active" onclick="goToSlide(0)"></button>
+      <button class="indicator" onclick="goToSlide(1)"></button>
+      <button class="indicator" onclick="goToSlide(2)"></button>
+      <button class="indicator" onclick="goToSlide(3)"></button>
+    </div>
+  </section>
+
   <!-- Admin Container -->
   <div id="admin-container">
     <!-- Login Page -->

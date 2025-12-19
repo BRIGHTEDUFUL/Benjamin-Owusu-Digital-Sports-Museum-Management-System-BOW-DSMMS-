@@ -61,7 +61,7 @@ const Archives = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Header />
 
       {/* Hero */}
@@ -80,8 +80,8 @@ const Archives = () => {
         </div>
       </section>
 
-      {/* Filters */}
-      <section className="sticky top-16 md:top-20 z-30 bg-background border-b border-border py-4">
+      {/* Filters - Sticky with proper z-index */}
+      <section className="sticky top-16 md:top-20 z-40 bg-background/95 backdrop-blur-sm border-b border-border py-4">
         <div className="container-museum">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             {/* Search */}
@@ -147,8 +147,8 @@ const Archives = () => {
         </div>
       </section>
 
-      {/* Results */}
-      <section className="section-padding">
+      {/* Results - Flex-grow to fill space */}
+      <section className="section-padding flex-grow">
         <div className="container-museum">
           {/* Results Count */}
           <p className="text-muted-foreground mb-6">

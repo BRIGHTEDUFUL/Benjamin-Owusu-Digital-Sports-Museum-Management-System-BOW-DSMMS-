@@ -23,25 +23,46 @@ interface LightboxProps {
 
 export function Lightbox({ item, onClose, onPrev, onNext, hasPrev, hasNext }: LightboxProps) {
   useEffect(() => {
+    if (!item) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-      if (e.key === "ArrowLeft" && hasPrev) onPrev?.();
-      if (e.key === "ArrowRight" && hasNext) onNext?.();
+      if (e.key === "Escape") {
+        onClose();
+      }
+      if (e.key === "ArrowLeft" && hasPrev) {
+        onPrev?.();
+      }
+      if (e.key === "ArrowRight" && hasNext) {
+        onNext?.();
+      }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
+    // Store previous overflow value
+    const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKeyDown);
 
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
+      // Restore previous overflow value
+      document.body.style.overflow = previousOverflow || "";
     };
-  }, [onClose, onPrev, onNext, hasPrev, hasNext]);
+  }, [item, onClose, onPrev, onNext, hasPrev, hasNext]);
+
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Only close if clicking on the backdrop, not on content
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
 
   if (!item) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-ghana-black/95 animate-fade-in">
+    <div 
+      className="fixed inset-0 z-50 bg-ghana-black/95 animate-fade-in overflow-y-auto"
+      onClick={handleBackdropClick}
+    >
       {/* Header */}
       <div className="absolute top-0 left-0 right-0 p-4 flex items-center justify-between z-10">
         <div className="flex items-center gap-3">
