@@ -54,146 +54,144 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
 
-      {/* Hero Slideshow Section */}
-      <section className="relative w-full min-h-screen flex items-center justify-center pt-16 md:pt-20 overflow-hidden">
-        {/* Slideshow Background */}
-        <div className="absolute inset-0 z-0">
-          {heroSlides.map((slide, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-all duration-1000 ease-out ${
-                index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
-              }`}
-            >
-              {brokenSlides[index] ? (
-                <div className="w-full h-full bg-gradient-to-br from-ghana-black via-ghana-black/90 to-ghana-black/70 flex items-center justify-center">
-                  <div className="text-center space-y-3 px-6">
-                    <Trophy className="w-12 h-12 text-secondary mx-auto opacity-60" />
-                    <p className="text-white/70 text-sm">{slide.alt}</p>
+      {/* Hero Section - Side by Side */}
+      <section className="relative w-full min-h-screen flex items-center pt-16 md:pt-20 bg-gradient-to-br from-ghana-black via-ghana-black/95 to-ghana-black/90">
+        {/* Animated Pattern Background */}
+        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:24px_24px]" />
+        
+        <div className="container-museum relative z-10 py-8 md:py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            
+            {/* Left Side - Info Content */}
+            <div className="space-y-6 md:space-y-8 order-2 lg:order-1 animate-slide-up">
+              {/* Animated Badge */}
+              <div className="inline-flex items-center gap-2 md:gap-3 px-4 md:px-5 py-2 md:py-2.5 rounded-full bg-white/10 backdrop-blur-lg border border-white/20 hover:border-secondary/50 transition-colors">
+                <span className="relative flex h-2 w-2 md:h-2.5 md:w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-full w-full bg-secondary"></span>
+                </span>
+                <span className="text-white/90 text-xs md:text-sm font-semibold tracking-widest uppercase">Welcome to Ghana's Football Heritage</span>
+              </div>
+
+              {/* Main Title */}
+              <div className="space-y-2 md:space-y-4">
+                <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-wider leading-tight text-white">
+                  <span className="block text-secondary drop-shadow-[0_0_30px_rgba(252,209,22,0.4)]">GFA DIGITAL</span>
+                  <span className="block">MUSEUM</span>
+                </h1>
+              </div>
+
+              {/* Description */}
+              <p className="text-base md:text-lg lg:text-xl text-white/85 max-w-2xl leading-relaxed">
+                Explore decades of football glory, from AFCON triumphs to World Cup dreams. 
+                Discover the stories, legends, and moments that defined Ghanaian football.
+              </p>
+
+              {/* Stats Grid */}
+              <div className="grid grid-cols-2 gap-4 py-4">
+                {stats.map((stat) => (
+                  <div key={stat.label} className="space-y-2">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-secondary/20 flex items-center justify-center">
+                        <stat.icon className="w-5 h-5 text-secondary" />
+                      </div>
+                      <p className="font-display text-3xl md:text-4xl text-white">{stat.value}</p>
+                    </div>
+                    <p className="text-sm text-white/70 font-medium">{stat.label}</p>
                   </div>
+                ))}
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4">
+                <Button asChild variant="hero" size="lg" className="group shadow-xl shadow-secondary/40 hover:shadow-secondary/60 transition-all duration-300">
+                  <Link to="/archives" className="flex items-center justify-center gap-2">
+                    Explore Archives
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
+                  </Link>
+                </Button>
+                <Button variant="heroOutline" size="lg" className="group border-2 border-white/40 text-white hover:border-secondary hover:text-secondary hover:bg-secondary/10 shadow-lg transition-all duration-300">
+                  <Play className="w-5 h-5 group-hover:scale-125 transition-transform" />
+                  Virtual Tour
+                </Button>
+              </div>
+            </div>
+
+            {/* Right Side - Slideshow */}
+            <div className="relative order-1 lg:order-2 animate-slide-up" style={{ animationDelay: "0.2s" }}>
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                {/* Slideshow Container */}
+                <div className="relative w-full h-full">
+                  {heroSlides.map((slide, index) => (
+                    <div
+                      key={index}
+                      className={`absolute inset-0 transition-all duration-1000 ease-out ${
+                        index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105"
+                      }`}
+                    >
+                      {brokenSlides[index] ? (
+                        <div className="w-full h-full bg-gradient-to-br from-ghana-black/80 via-ghana-black/70 to-ghana-black/60 flex items-center justify-center border border-white/10">
+                          <div className="text-center space-y-3 px-6">
+                            <Trophy className="w-12 h-12 text-secondary mx-auto opacity-60" />
+                            <p className="text-white/70 text-sm">{slide.alt}</p>
+                          </div>
+                        </div>
+                      ) : (
+                        <img
+                          src={slide.image}
+                          alt={slide.alt}
+                          className="w-full h-full object-cover"
+                          onError={() => onSlideError(index)}
+                          loading={index === 0 ? "eager" : "lazy"}
+                          decoding="async"
+                        />
+                      )}
+                    </div>
+                  ))}
+                  
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-ghana-black/40 via-transparent to-transparent pointer-events-none" />
                 </div>
-              ) : (
-                <img
-                  src={slide.image}
-                  alt={slide.alt}
-                  className="w-full h-full object-cover"
-                  onError={() => onSlideError(index)}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                />
-              )}
-            </div>
-          ))}
-          {/* Modern Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-ghana-black via-ghana-black/90 to-ghana-black/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-ghana-black/80 via-transparent to-ghana-black/30" />
-          {/* Animated Pattern Overlay */}
-          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:24px_24px]" />
-        </div>
 
-        {/* Slideshow Navigation Arrows */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 hover:scale-110 transition-all duration-300 group"
-        >
-          <ChevronLeft className="w-6 h-6 group-hover:-translate-x-0.5 transition-transform" />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 hover:scale-110 transition-all duration-300 group"
-        >
-          <ChevronRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform" />
-        </button>
+                {/* Navigation Arrows */}
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 hover:scale-110 transition-all duration-300 group"
+                  aria-label="Previous slide"
+                >
+                  <ChevronLeft className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 hover:scale-110 transition-all duration-300 group"
+                  aria-label="Next slide"
+                >
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
+                </button>
 
-        {/* Slide Indicators */}
-        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
-          {heroSlides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`relative h-1.5 rounded-full transition-all duration-500 overflow-hidden ${
-                index === currentSlide ? "w-12 bg-secondary" : "w-6 bg-white/30 hover:bg-white/50"
-              }`}
-            >
-              {index === currentSlide && (
-                <div 
-                  className="absolute inset-0 bg-secondary/50 origin-left"
-                  style={{ animation: isAutoPlaying ? "slideProgress 5s linear" : "none" }}
-                />
-              )}
-            </button>
-          ))}
-        </div>
-
-        {/* Hero Content */}
-        <div className="container-museum relative z-10 flex items-center min-h-[80vh] w-full">
-          <div className="w-full max-w-5xl space-y-6 md:space-y-10 bg-black/40 backdrop-blur-3xl border border-white/20 rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-12 lg:p-16 shadow-2xl animate-slide-up">
-            {/* Animated Badge */}
-            <div className="inline-flex items-center gap-2 md:gap-3 px-4 md:px-5 py-2 md:py-2.5 rounded-full bg-white/15 backdrop-blur-lg border border-white/20 hover:border-secondary/50 transition-colors">
-              <span className="relative flex h-2 w-2 md:h-2.5 md:w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-full w-full bg-secondary"></span>
-              </span>
-              <span className="text-white/90 text-xs md:text-sm font-semibold tracking-widest uppercase">Welcome to Ghana's Football Heritage</span>
+                {/* Slide Indicators */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2">
+                  {heroSlides.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => goToSlide(index)}
+                      className={`relative h-1.5 rounded-full transition-all duration-500 overflow-hidden ${
+                        index === currentSlide ? "w-10 bg-secondary" : "w-4 bg-white/40 hover:bg-white/60"
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    >
+                      {index === currentSlide && (
+                        <div 
+                          className="absolute inset-0 bg-secondary/50 origin-left"
+                          style={{ animation: isAutoPlaying ? "slideProgress 5s linear" : "none" }}
+                        />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            {/* Main Title with Animation */}
-            <div className="space-y-1 md:space-y-3">
-              <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl tracking-tighter md:tracking-wider leading-tight text-white">
-                <span className="block text-secondary drop-shadow-[0_0_30px_rgba(252,209,22,0.4)]">GFA DIGITAL</span>
-                <span className="block">MUSEUM</span>
-              </h1>
-            </div>
-
-            {/* Description */}
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/85 max-w-3xl leading-relaxed tracking-wide">
-              Explore decades of football glory, from AFCON triumphs to World Cup dreams. 
-              Discover the stories, legends, and moments that defined Ghanaian football.
-            </p>
-
-            {/* CTA Buttons - Professional Layout */}
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-2 md:pt-6">
-              <Button asChild variant="hero" size="lg" className="group shadow-xl shadow-secondary/40 hover:shadow-secondary/60 transition-all duration-300 text-base md:text-lg px-6 md:px-8 py-5 md:py-6">
-                <Link to="/archives" className="flex items-center justify-center md:justify-start gap-2">
-                  Explore Archives
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
-                </Link>
-              </Button>
-              <Button variant="heroOutline" size="lg" className="group border-2 border-white/40 text-white hover:border-secondary hover:text-secondary hover:bg-secondary/10 shadow-lg shadow-white/20 transition-all duration-300 text-base md:text-lg px-6 md:px-8 py-5 md:py-6">
-                <Play className="w-5 h-5 group-hover:scale-125 transition-transform" />
-                Virtual Tour
-              </Button>
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-          <div className="w-7 h-12 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
-            <div className="w-1.5 h-3 rounded-full bg-secondary animate-pulse" />
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="relative z-10 -mt-20">
-        <div className="container-museum">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {stats.map((stat, index) => (
-              <Card 
-                key={stat.label} 
-                className="bg-card/80 backdrop-blur-xl border-white/10 shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 transition-all duration-500 animate-slide-up group"
-                style={{ opacity: 0, animationFillMode: 'forwards', animationDelay: `${0.1 * (index + 1)}s` }}
-              >
-                <CardContent className="p-6 md:p-8 text-center">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <stat.icon className="w-7 h-7 text-primary" />
-                  </div>
-                  <p className="font-display text-4xl md:text-5xl tracking-wider text-foreground">{stat.value}</p>
-                  <p className="text-sm text-muted-foreground mt-2 font-medium">{stat.label}</p>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
