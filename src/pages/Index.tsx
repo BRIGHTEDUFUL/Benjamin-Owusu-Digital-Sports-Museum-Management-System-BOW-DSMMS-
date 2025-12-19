@@ -8,11 +8,17 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArchiveCard } from "@/components/archive/ArchiveCard";
 import { archives } from "@/data/archives";
 
+// Import hero images
+import hero1 from "@/assets/hero-1.jpg";
+import hero2 from "@/assets/hero-2.jpg";
+import hero3 from "@/assets/hero-3.jpg";
+import hero4 from "@/assets/hero-4.jpg";
+
 const heroSlides = [
-  { image: "/images/hero-1.jpg", alt: "Ghana Black Stars Player Celebrating" },
-  { image: "/images/hero-2.jpg", alt: "Ghana National Team Squad" },
-  { image: "/images/hero-3.jpg", alt: "Abedi Pele - Ghana Football Legend" },
-  { image: "/images/hero-4.jpg", alt: "Asamoah Gyan - Black Stars Captain" },
+  { image: hero1, alt: "Ghana Black Stars Player Celebrating" },
+  { image: hero2, alt: "Ghana National Team Squad" },
+  { image: hero3, alt: "Abedi Pele - Ghana Football Legend" },
+  { image: hero4, alt: "Asamoah Gyan - Black Stars Captain" },
 ];
 
 const stats = [
