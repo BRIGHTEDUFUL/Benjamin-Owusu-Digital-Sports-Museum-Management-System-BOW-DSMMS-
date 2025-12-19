@@ -55,7 +55,7 @@ const Index = () => {
       <Header />
 
       {/* Hero Slideshow Section */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      <section className="relative w-full min-h-screen flex items-center justify-center pt-16 md:pt-20 overflow-hidden">
         {/* Slideshow Background */}
         <div className="absolute inset-0 z-0">
           {heroSlides.map((slide, index) => (
@@ -126,41 +126,41 @@ const Index = () => {
         </div>
 
         {/* Hero Content */}
-        <div className="container-museum relative z-10">
-          <div className="max-w-4xl space-y-8 bg-black/30 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl animate-slide-up">
+        <div className="container-museum relative z-10 flex items-center min-h-[80vh] w-full">
+          <div className="w-full max-w-5xl space-y-6 md:space-y-10 bg-black/40 backdrop-blur-3xl border border-white/20 rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-12 lg:p-16 shadow-2xl animate-slide-up">
             {/* Animated Badge */}
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-lg border border-white/10">
-              <span className="relative flex h-2.5 w-2.5">
+            <div className="inline-flex items-center gap-2 md:gap-3 px-4 md:px-5 py-2 md:py-2.5 rounded-full bg-white/15 backdrop-blur-lg border border-white/20 hover:border-secondary/50 transition-colors">
+              <span className="relative flex h-2 w-2 md:h-2.5 md:w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-secondary"></span>
+                <span className="relative inline-flex rounded-full h-full w-full bg-secondary"></span>
               </span>
-              <span className="text-secondary/90 text-sm font-medium tracking-wide">Welcome to Ghana's Football Heritage</span>
+              <span className="text-white/90 text-xs md:text-sm font-semibold tracking-widest uppercase">Welcome to Ghana's Football Heritage</span>
             </div>
 
             {/* Main Title with Animation */}
-            <div className="space-y-2">
-              <h1 className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl tracking-wider leading-none text-white">
-                <span className="text-secondary drop-shadow-[0_0_30px_rgba(252,209,22,0.3)]">GFA DIGITAL</span>
+            <div className="space-y-1 md:space-y-3">
+              <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl tracking-tighter md:tracking-wider leading-tight text-white">
+                <span className="block text-secondary drop-shadow-[0_0_30px_rgba(252,209,22,0.4)]">GFA DIGITAL</span>
+                <span className="block">MUSEUM</span>
               </h1>
-              <h1 className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl tracking-wider leading-none text-white">MUSEUM</h1>
             </div>
 
             {/* Description */}
-            <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/85 max-w-3xl leading-relaxed tracking-wide">
               Explore decades of football glory, from AFCON triumphs to World Cup dreams. 
               Discover the stories, legends, and moments that defined Ghanaian football.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row flex-wrap items-center gap-4 pt-4">
-              <Button asChild variant="hero" size="xl" className="group w-full sm:w-auto shadow-lg shadow-secondary/30">
-                <Link to="/archives">
+            {/* CTA Buttons - Professional Layout */}
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-2 md:pt-6">
+              <Button asChild variant="hero" size="lg" className="group shadow-xl shadow-secondary/40 hover:shadow-secondary/60 transition-all duration-300 text-base md:text-lg px-6 md:px-8 py-5 md:py-6">
+                <Link to="/archives" className="flex items-center justify-center md:justify-start gap-2">
                   Explore Archives
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
                 </Link>
               </Button>
-              <Button variant="heroOutline" size="xl" className="group w-full sm:w-auto border-white/30 text-white hover:border-secondary hover:text-secondary shadow-lg shadow-white/10">
-                <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <Button variant="heroOutline" size="lg" className="group border-2 border-white/40 text-white hover:border-secondary hover:text-secondary hover:bg-secondary/10 shadow-lg shadow-white/20 transition-all duration-300 text-base md:text-lg px-6 md:px-8 py-5 md:py-6">
+                <Play className="w-5 h-5 group-hover:scale-125 transition-transform" />
                 Virtual Tour
               </Button>
             </div>

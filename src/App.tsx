@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Index from "./pages/Index";
 import Archives from "./pages/Archives";
 import Exhibits from "./pages/Exhibits";
+import Quiz from "./pages/Quiz";
 import Visitor from "./pages/Visitor";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
@@ -24,6 +25,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/archives" element={<Archives />} />
             <Route path="/exhibits" element={<Exhibits />} />
+            <Route path="/quiz" element={<Quiz />} />
             <Route path="/visitor" element={<Visitor />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<NotFound />} />

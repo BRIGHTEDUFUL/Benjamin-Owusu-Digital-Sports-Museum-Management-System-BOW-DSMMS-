@@ -233,8 +233,10 @@ const Exhibits = () => {
               quiz covering decades of Black Stars history.
             </p>
             <Button variant="hero" size="xl">
-              Start Quiz
-              <ChevronRight className="w-5 h-5" />
+              <Link to="/quiz" className="flex items-center gap-2">
+                Start Quiz
+                <ChevronRight className="w-5 h-5" />
+              </Link>
             </Button>
           </div>
         </div>
