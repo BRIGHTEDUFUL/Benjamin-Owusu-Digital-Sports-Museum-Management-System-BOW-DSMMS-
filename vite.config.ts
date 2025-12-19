@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/",
+  base: "/Benjamin-Owusu-Digital-Sports-Museum-Management-System-BOW-DSMMS-/",
   server: {
     host: "::",
     port: 8080,
