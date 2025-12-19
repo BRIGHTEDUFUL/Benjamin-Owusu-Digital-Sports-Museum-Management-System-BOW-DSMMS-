@@ -39,7 +39,7 @@ export function Footer() {
           <div>
             <h4 className="font-display text-lg tracking-wider text-secondary mb-4">Explore</h4>
             <ul className="space-y-2">
-              {["Archives", "Exhibits", "Virtual Tours", "Events", "Shop"].map((item) => (
+              {["Archives", "Visitor Hub", "Quiz", "Admin"].map((item) => (
                 <li key={item}>
                   <Link to="#" className="text-sm text-muted-foreground hover:text-secondary transition-colors">
                     {item}

@@ -13,6 +13,34 @@
     <meta property="og:type" content="website" />
 
     <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- Single Page Apps for GitHub Pages -->
+    <script>
+      // Check if this is a redirect from 404.html
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+      
+      // Store the redirect for page reloads
+      (function() {
+        var search = window.location.search;
+        if (search && search.indexOf('/?/') !== -1) {
+          var pathSegmentsToKeep = 1;
+          var path = window.location.pathname.slice(1).split('/');
+          var route = search.slice(3).split('&')[0];
+          
+          sessionStorage.redirect = window.location.origin +
+            '/' + path.slice(0, pathSegmentsToKeep).join('/') +
+            '/' + route +
+            (search.split('&').slice(1).join('&') ? '?' + search.split('&').slice(1).join('&') : '') +
+            window.location.hash;
+        }
+      })();
+    </script>
   </head>
 
   <body>

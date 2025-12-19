@@ -184,8 +184,8 @@ const Quiz = () => {
                       Retake Quiz
                     </Button>
                     <Button asChild variant="outline" size="lg" className="flex-1">
-                      <Link to="/exhibits">
-                        Explore More
+                      <Link to="/archives">
+                        Explore Archives
                       </Link>
                     </Button>
                   </div>
@@ -338,9 +338,9 @@ const Quiz = () => {
             {showResult && (
               <div className="flex gap-4">
                 <Button asChild variant="outline" size="lg" className="flex-1">
-                  <Link to="/exhibits" className="flex items-center gap-2">
+                  <Link to="/archives" className="flex items-center gap-2">
                     <ArrowLeft className="w-5 h-5" />
-                    Back to Exhibits
+                    Back to Archives
                   </Link>
                 </Button>
                 <Button

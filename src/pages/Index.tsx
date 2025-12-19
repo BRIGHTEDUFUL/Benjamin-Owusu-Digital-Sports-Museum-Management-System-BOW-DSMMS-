@@ -239,12 +239,12 @@ const Index = () => {
               EXPERIENCE THE <span className="text-secondary drop-shadow-[0_0_20px_rgba(252,209,22,0.4)]">GLORY</span>
             </h2>
             <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
-              Join us for exclusive exhibits, interactive displays, and immersive experiences 
+              Join us to explore our digital archives, interactive displays, and immersive experiences 
               that bring Ghana's football history to life.
             </p>
             <div className="flex flex-wrap justify-center gap-4 pt-4">
               <Button asChild variant="hero" size="lg">
-                <Link to="/exhibits">Interactive Exhibits</Link>
+                <Link to="/archives">Explore Archives</Link>
               </Button>
               <Button asChild variant="heroOutline" size="lg">
                 <Link to="/visitor">Plan Your Visit</Link>

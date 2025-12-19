@@ -9,7 +9,6 @@ import gfaLogo from "@/assets/gfa-logo.png";
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "Archives", path: "/archives" },
-  { name: "Exhibits", path: "/exhibits" },
   { name: "Visitor Hub", path: "/visitor" },
   { name: "Admin", path: "/admin" },
 ];
