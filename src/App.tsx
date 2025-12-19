@@ -19,7 +19,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
+        <BrowserRouter basename="/Benjamin-Owusu-Digital-Sports-Museum-Management-System-BOW-DSMMS-/">
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/archives" element={<Archives />} />
