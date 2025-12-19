@@ -4,6 +4,7 @@ import { Menu, X, Moon, Sun, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/components/theme-provider";
+import gfaLogo from "@/assets/gfa-logo.png";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -35,16 +36,13 @@ export function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             {!logoError ? (
-              <picture>
-                <source srcSet="/images/gfa-logo.svg" type="image/svg+xml" />
-                <img 
-                  src="/images/gfa-logo.svg" 
-                  alt="GFA Logo" 
-                  className="w-10 h-10 rounded-full group-hover:scale-110 transition-transform object-contain bg-primary/10"
-                  onError={handleLogoError}
-                  loading="eager"
-                />
-              </picture>
+              <img 
+                src={gfaLogo} 
+                alt="GFA Logo" 
+                className="w-10 h-10 rounded-full group-hover:scale-110 transition-transform object-contain bg-primary/10"
+                onError={handleLogoError}
+                loading="eager"
+              />
             ) : (
               <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Trophy className="w-5 h-5 text-secondary" />
