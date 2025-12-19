@@ -1,5 +1,84 @@
 // GFA Digital Sports Museum - Main JavaScript
 
+// ==================== Hero Slideshow ====================
+let currentSlide = 0;
+let slideInterval;
+const totalSlides = 4;
+const slideDelay = 5000;
+
+function initSlideshow() {
+  const slides = document.querySelectorAll('.slide');
+  const indicators = document.querySelectorAll('.indicator');
+  
+  if (slides.length === 0) return;
+  
+  // Start auto-play
+  startAutoSlide();
+  
+  // Pause on hover
+  const slideshow = document.querySelector('.hero-slideshow');
+  if (slideshow) {
+    slideshow.addEventListener('mouseenter', stopAutoSlide);
+    slideshow.addEventListener('mouseleave', startAutoSlide);
+  }
+}
+
+function startAutoSlide() {
+  stopAutoSlide();
+  slideInterval = setInterval(() => {
+    nextSlide();
+  }, slideDelay);
+}
+
+function stopAutoSlide() {
+  if (slideInterval) {
+    clearInterval(slideInterval);
+  }
+}
+
+function goToSlide(index) {
+  const slides = document.querySelectorAll('.slide');
+  const indicators = document.querySelectorAll('.indicator');
+  
+  if (slides.length === 0) return;
+  
+  // Remove active class from all
+  slides.forEach(slide => slide.classList.remove('active'));
+  indicators.forEach(ind => ind.classList.remove('active'));
+  
+  // Set new index
+  currentSlide = index;
+  if (currentSlide >= totalSlides) currentSlide = 0;
+  if (currentSlide < 0) currentSlide = totalSlides - 1;
+  
+  // Add active class
+  slides[currentSlide].classList.add('active');
+  indicators[currentSlide].classList.add('active');
+}
+
+function nextSlide() {
+  goToSlide(currentSlide + 1);
+}
+
+function prevSlide() {
+  goToSlide(currentSlide - 1);
+}
+
+// Keyboard navigation for slideshow
+document.addEventListener('keydown', (e) => {
+  const slideshow = document.querySelector('.hero-slideshow');
+  if (!slideshow) return;
+  
+  if (e.key === 'ArrowLeft') {
+    prevSlide();
+    startAutoSlide();
+  }
+  if (e.key === 'ArrowRight') {
+    nextSlide();
+    startAutoSlide();
+  }
+});
+
 // ==================== Archive Data ====================
 const archives = [
   {
@@ -785,6 +864,7 @@ function adminLogout() {
 
 // ==================== Initialize ====================
 document.addEventListener("DOMContentLoaded", () => {
+  initSlideshow();
   initMobileMenu();
   initArchiveFilters();
   initLightbox();

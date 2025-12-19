@@ -56,13 +56,48 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-bg">
-      <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920&h=1080&fit=crop" alt="Ghana Football Trophy">
-      <div class="hero-overlay"></div>
+  <!-- Hero Slideshow Section -->
+  <section class="hero-slideshow">
+    <div class="slideshow-container">
+      <div class="slide active">
+        <img src="images/hero-1.jpg" alt="Ghana Black Stars Player Celebrating">
+        <div class="slide-overlay"></div>
+      </div>
+      <div class="slide">
+        <img src="images/hero-2.jpg" alt="Ghana National Team Squad">
+        <div class="slide-overlay"></div>
+      </div>
+      <div class="slide">
+        <img src="images/hero-3.jpg" alt="Abedi Pele - Ghana Football Legend">
+        <div class="slide-overlay"></div>
+      </div>
+      <div class="slide">
+        <img src="images/hero-4.jpg" alt="Asamoah Gyan - Black Stars Captain">
+        <div class="slide-overlay"></div>
+      </div>
     </div>
-    
+
+    <!-- Slideshow Navigation -->
+    <button class="slideshow-btn slideshow-prev" onclick="prevSlide()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+    </button>
+    <button class="slideshow-btn slideshow-next" onclick="nextSlide()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+    </button>
+
+    <!-- Slideshow Indicators -->
+    <div class="slideshow-indicators">
+      <button class="indicator active" onclick="goToSlide(0)"></button>
+      <button class="indicator" onclick="goToSlide(1)"></button>
+      <button class="indicator" onclick="goToSlide(2)"></button>
+      <button class="indicator" onclick="goToSlide(3)"></button>
+    </div>
+
+    <!-- Hero Content -->
     <div class="container">
       <div class="hero-content animate-slide-up">
         <div class="hero-badge">
