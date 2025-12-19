@@ -64,7 +64,7 @@ const Index = () => {
         <div className="absolute left-1/2 -translate-x-1/2 -top-6 w-64 h-64 rounded-full border border-white/10 animate-rotate-slow opacity-50" />
         
         <div className="container-museum relative z-10 py-8 md:py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
             
             {/* Left Side - Info Content */}
             <div className="space-y-6 md:space-y-8 order-2 lg:order-1 animate-slide-up">
@@ -92,7 +92,7 @@ const Index = () => {
               </p>
 
               {/* Stats Grid */}
-              <div className="grid grid-cols-2 gap-4 py-4">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 py-4">
                 {stats.map((stat) => (
                   <div key={stat.label} className="space-y-2">
                     <div className="flex items-center gap-3">
@@ -123,7 +123,7 @@ const Index = () => {
 
             {/* Right Side - Slideshow */}
             <div className="relative order-1 lg:order-2 animate-slide-up" style={{ animationDelay: "0.2s" }}>
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative aspect-[4/3] sm:aspect-[16/9] lg:aspect-[4/3] max-h-[72vh] rounded-2xl overflow-hidden shadow-2xl">
                 {/* Slideshow Container */}
                 <div className="relative w-full h-full">
                   {heroSlides.map((slide, index) => (
@@ -160,14 +160,14 @@ const Index = () => {
                 {/* Navigation Arrows */}
                 <button
                   onClick={prevSlide}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 hover:scale-110 transition-all duration-300 group"
+                  className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 hover:scale-110 transition-all duration-300 group"
                   aria-label="Previous slide"
                 >
                   <ChevronLeft className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" />
                 </button>
                 <button
                   onClick={nextSlide}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 hover:scale-110 transition-all duration-300 group"
+                  className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white/20 hover:scale-110 transition-all duration-300 group"
                   aria-label="Next slide"
                 >
                   <ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
@@ -216,7 +216,7 @@ const Index = () => {
             </Button>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {featuredArchives.map((item, index) => (
               <div 
                 key={item.id}
@@ -266,7 +266,7 @@ const Index = () => {
             <h2 className="font-display text-4xl md:text-6xl tracking-wider">LATEST NEWS</h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { title: "New Exhibit: Black Stars World Cup Journey", date: "December 15, 2024", description: "A comprehensive exhibition showcasing Ghana's three FIFA World Cup appearances." },
               { title: "Digitization Project Milestone", date: "December 10, 2024", description: "Over 10,000 historical photographs have been digitized and added to our archives." },
