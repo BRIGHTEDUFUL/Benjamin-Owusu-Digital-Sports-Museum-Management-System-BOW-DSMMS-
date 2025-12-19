@@ -58,6 +58,10 @@ const Index = () => {
       <section className="relative w-full min-h-screen flex items-center pt-16 md:pt-20 bg-gradient-to-br from-ghana-black via-ghana-black/95 to-ghana-black/90">
         {/* Animated Pattern Background */}
         <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:24px_24px]" />
+        {/* Floating glow accents */}
+        <div className="absolute -left-10 top-24 w-56 h-56 rounded-full bg-secondary/15 blur-3xl animate-float-slow" />
+        <div className="absolute right-4 bottom-6 w-72 h-72 rounded-full bg-primary/10 blur-3xl animate-float-slower" />
+        <div className="absolute left-1/2 -translate-x-1/2 -top-6 w-64 h-64 rounded-full border border-white/10 animate-rotate-slow opacity-50" />
         
         <div className="container-museum relative z-10 py-8 md:py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -216,7 +220,7 @@ const Index = () => {
             {featuredArchives.map((item, index) => (
               <div 
                 key={item.id}
-                className="animate-slide-up"
+                className="group animate-slide-up transition-transform duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-secondary/20"
                 style={{ opacity: 0, animationFillMode: 'forwards', animationDelay: `${0.1 * (index + 1)}s` }}
               >
                 <ArchiveCard item={item} />
@@ -230,6 +234,8 @@ const Index = () => {
       <section className="section-padding relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(252,209,22,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 opacity-30 bg-[conic-gradient(from_120deg,rgba(255,255,255,0.08)_0deg,transparent_120deg,transparent_240deg,rgba(255,255,255,0.1)_360deg)] animate-rotate-slower" />
+        <div className="absolute inset-0 mix-blend-screen opacity-30 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.15),transparent_30%),radial-gradient(circle_at_80%_30%,rgba(255,255,255,0.1),transparent_25%),radial-gradient(circle_at_50%_80%,rgba(255,255,255,0.12),transparent_35%)] animate-pulse-soft" />
         
         <div className="container-museum relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8">
@@ -268,10 +274,11 @@ const Index = () => {
             ].map((news, index) => (
               <Card 
                 key={news.title} 
-                className="group hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 animate-slide-up border-transparent hover:border-primary/20"
+                className="group relative overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 animate-slide-up border-transparent hover:border-primary/20 bg-card/90"
                 style={{ opacity: 0, animationFillMode: 'forwards', animationDelay: `${0.1 * (index + 1)}s` }}
               >
-                <CardContent className="p-8">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <CardContent className="relative p-8">
                   <p className="text-sm text-primary font-semibold mb-3">{news.date}</p>
                   <h3 className="font-display text-2xl tracking-wide mb-4 group-hover:text-primary transition-colors">{news.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{news.description}</p>
@@ -289,6 +296,16 @@ const Index = () => {
 
       <style>{`
         @keyframes slideProgress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+        @keyframes floatSlow { 0% { transform: translateY(0); } 50% { transform: translateY(-12px); } 100% { transform: translateY(0); } }
+        @keyframes floatSlower { 0% { transform: translateY(0); } 50% { transform: translateY(16px); } 100% { transform: translateY(0); } }
+        @keyframes rotateSlow { from { transform: translate(-50%, 0) rotate(0deg); } to { transform: translate(-50%, 0) rotate(360deg); } }
+        @keyframes pulseSoft { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.45; } }
+
+        .animate-float-slow { animation: floatSlow 9s ease-in-out infinite; }
+        .animate-float-slower { animation: floatSlower 14s ease-in-out infinite; }
+        .animate-rotate-slow { animation: rotateSlow 22s linear infinite; }
+        .animate-rotate-slower { animation: rotateSlow 32s linear infinite; }
+        .animate-pulse-soft { animation: pulseSoft 6s ease-in-out infinite; }
       `}</style>
     </div>
   );
