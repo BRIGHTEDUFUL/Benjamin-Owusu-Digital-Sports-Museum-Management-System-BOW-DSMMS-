@@ -521,31 +521,143 @@ ul, ol {
   margin-top: 0.25rem;
 }
 
-/* ==================== Hero Section ==================== */
-.hero {
+/* ==================== Hero Slideshow Section ==================== */
+.hero-slideshow {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
   padding-top: 80px;
+  overflow: hidden;
 }
 
-.hero-bg {
+.slideshow-container {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
-.hero-bg img {
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 1.5s ease-in-out;
+  transform: scale(1.1);
+}
+
+.slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.hero-overlay {
+.slide-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, var(--ghana-black) 0%, rgba(20, 20, 20, 0.8) 50%, transparent 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(20, 20, 20, 0.95) 0%,
+    rgba(20, 20, 20, 0.75) 40%,
+    rgba(20, 20, 20, 0.4) 70%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+}
+
+/* Slideshow Navigation Buttons */
+.slideshow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slideshow-btn:hover {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 30px hsla(48, 97%, 53%, 0.4);
+}
+
+.slideshow-prev {
+  left: 1.5rem;
+}
+
+.slideshow-next {
+  right: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .slideshow-btn {
+    width: 44px;
+    height: 44px;
+  }
+  .slideshow-prev { left: 0.75rem; }
+  .slideshow-next { right: 0.75rem; }
+}
+
+/* Slideshow Indicators */
+.slideshow-indicators {
+  position: absolute;
+  bottom: 6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.indicator.active {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  transform: scale(1.2);
+  box-shadow: 0 0 15px hsla(48, 97%, 53%, 0.6);
+}
+
+/* Progress bar for auto-slide */
+.slideshow-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: var(--secondary);
+  z-index: 20;
+  animation: slideProgress 5s linear infinite;
+}
+
+@keyframes slideProgress {
+  0% { width: 0%; }
+  100% { width: 100%; }
 }
 
 .hero-content {
